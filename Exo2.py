@@ -1,4 +1,3 @@
-
 print("Bonjour, et bienvenue dans mon nouveau programme")
 Prenom = input("Quel est votre prénom ? ")
 Nom = input("Quel est votre nom de famille ? ")
