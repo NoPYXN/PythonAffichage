@@ -1,0 +1,17 @@
+def lire_fichier_decorateur(fonction):
+    def wrapper(fichier):
+
+            with open(fichier, 'r') as f:
+                lignes = f.readlines()
+                for ligne in lignes:
+                    if "test" in ligne:
+                        fonction(ligne)
+
+    return wrapper
+
+@lire_fichier_decorateur
+def traiter_ligne(ligne):
+    print(f"Ligne contenant 'test' : {ligne.strip()}")
+
+
+traiter_ligne('test.txt')

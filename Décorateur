@@ -1,0 +1,31 @@
+# def mon_decorateur(fonction):
+#     def enveloppe():
+#         print("Code avant l'exécution de la fonction")
+#         fonction()
+#         print("Code après l'exécution de la fonction")
+#     return enveloppe
+ 
+# @mon_decorateur
+# def dire_bonjour():
+#     print("Bonjour !")
+ 
+# dire_bonjour()
+
+
+
+def journaliser_generateur(fonction):
+    def Chiffre(*args, **kwargs):
+        print("Code avant l'exécution de la fonction")
+        for valeur in fonction(*args, **kwargs):
+            print(f"valeur generer : {valeur}")
+            yield valeur
+        print(f"Fin de {fonction}")
+    return Chiffre
+
+@journaliser_generateur
+def compteur(max):
+    for i in range(max):
+        yield i
+ 
+for numero in compteur(5):
+    print(f"Num dans la boucle principale : {numero}")

@@ -1,0 +1,18 @@
+def lire_fichier_decorateur(fonction):
+    def wrapper(fichier):
+        try:
+            with open(fichier, 'r') as f:
+                lignes = f.readlines()
+                for ligne in lignes:
+                    fonction(ligne)
+        except FileNotFoundError:
+            print(f"Le fichier {fichier} n'a pas été trouvé.")
+        except Exception as e:
+            print(f"Une erreur s'est produite : {e}")
+    return wrapper
+
+@lire_fichier_decorateur
+def traiter_ligne(ligne):
+    print(f"Ligne traitée : {ligne.strip()}")
+
+traiter_ligne('test.txt')
